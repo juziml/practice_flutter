@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
         canvasColor: Colors.blueAccent,
       ),
       initialRoute: "/",//
+      //注册路由
       routes: {
        "/":(context){
           return HomePage();
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//这是页的纬度
+//这是页的维度
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
