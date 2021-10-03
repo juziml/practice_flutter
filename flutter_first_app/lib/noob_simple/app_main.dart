@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_first_app/main/CountHomePage.dart';
-import 'package:flutter_first_app/main/SimpleHomePage.dart';
+import 'package:flutter_first_app/noob_simple/CountHomePage.dart';
+import 'package:flutter_first_app/noob_simple/SimpleHomePage.dart';
 
 void main() {
   runApp(MainApp());
