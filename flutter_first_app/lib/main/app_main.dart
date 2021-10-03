@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_first_app/main/CountHomePage.dart';
 import 'package:flutter_first_app/main/SimpleHomePage.dart';
 
 void main() {
@@ -14,7 +15,8 @@ class MainApp extends StatelessWidget{
         primaryColor: Colors.amber,
             canvasColor: Colors.teal
       ),
-      home: MainHomePage(),
+      // home: SimpleHomePage(),
+      home: CountHomePage("CountHomePage的名称",),
     );
   }
 
