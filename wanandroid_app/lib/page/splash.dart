@@ -25,7 +25,7 @@ class SplashPage extends StatelessWidget{
               Image(image: AssetImage("images/icon_flutter.png"),width: 80.0),
               Padding(padding: EdgeInsets.all(20)),
               const Text(
-                "By WanAndroid open API",
+                "FlutterStuff",
                 style: TextStyle(
                   fontStyle: FontStyle.normal,
                   color: Colors.white,
