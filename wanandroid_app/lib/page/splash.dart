@@ -3,41 +3,52 @@
 import 'package:flutter/material.dart';
 import 'package:wanandroid_app/c/color_list.dart';
 
-class SplashPage extends StatelessWidget{
+class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MColors.primaryColorDark,
-      body:ConstrainedBox(
-        constraints: const BoxConstraints(
-          maxWidth: double.infinity,
-          maxHeight: double.infinity
-        ),
-        child: Center(
-          widthFactor: double.infinity,
-          heightFactor: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children:  [
-              // Image.asset("images/icon_flutter.png",width: 100.0),
-              Image(image: AssetImage("images/icon_flutter.png"),width: 80.0),
-              Padding(padding: EdgeInsets.all(20)),
-              const Text(
-                "FlutterStuff",
-                style: TextStyle(
-                  fontStyle: FontStyle.normal,
-                  color: Colors.white,
-                  fontSize: 40,
-                ),),
-            ],
-          ),
-        )
+      body: ConstrainedBox(
+          constraints: const BoxConstraints(
+              maxWidth: double.infinity, maxHeight: double.infinity),
 
-      ),
 
+          child: Center(
+            widthFactor: double.infinity,
+            heightFactor: double.infinity,
+            child: Column(
+
+              children: [
+                // Image.asset("images/icon_flutter.png",width: 100.0),
+                Image(
+                    image: AssetImage("images/icon_flutter.png"), width: 80.0),
+                Padding(padding: EdgeInsets.all(20)),
+                const Text(
+                  "FlutterStuff",
+                  style: TextStyle(
+                    fontStyle: FontStyle.normal,
+                    color: Colors.white,
+                    fontSize: 40,
+                  ),
+                ),
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                  const Text(
+                    "thanks for wanandroid.com",
+                    style: TextStyle(
+                      fontStyle: FontStyle.normal,
+                      color: Colors.white,
+                      fontSize: 12,
+                    ),
+                  ),
+                ])
+              ],
+            ),
+          )),
     );
   }
-
 }
