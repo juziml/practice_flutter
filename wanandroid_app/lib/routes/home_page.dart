@@ -26,9 +26,22 @@ class _HomeState extends State<HomePage>{
             color: Colors.yellow,
         )),
         Expanded(
-            flex: 1,
-            child: Container(
-              color: Colors.tealAccent,
+            flex: 0,
+            child: BottomNavigationBar(
+              items: const [
+                BottomNavigationBarItem(
+                  icon:Icon(Icons.house),
+                    label: "AAA"
+                ),
+                BottomNavigationBarItem(
+                  icon:Icon(Icons.people),
+                    label: "BBB"
+                ),
+                BottomNavigationBarItem(
+                    icon:Icon(Icons.add),
+                    label: "CCC"
+                ),
+              ],
             ))
       ],
       ),
