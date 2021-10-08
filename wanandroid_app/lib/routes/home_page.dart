@@ -50,6 +50,7 @@ class _HomeState extends State<HomePage> {
             size: 20
         ),
       selectedItemColor: MColors.primaryColorAccent,
+      unselectedItemColor: MColors.primaryColorDark,
         items:const [
           BottomNavigationBarItem(
             icon: Icon(Icons.dynamic_feed_rounded),

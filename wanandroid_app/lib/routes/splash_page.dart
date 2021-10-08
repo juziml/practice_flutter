@@ -22,7 +22,7 @@ class SplashPage extends StatelessWidget {
       _goHomePage(context);
     });
     return Scaffold(
-        backgroundColor: MColors.primaryColorDark,
+        backgroundColor: MColors.primaryBackground,
         body: Container(
             child: Flex(
           direction: Axis.vertical,
