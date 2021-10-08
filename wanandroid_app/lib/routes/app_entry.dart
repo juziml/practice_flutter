@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wanandroid_app/routes/splash_page.dart';
-import 'package:wanandroid_app/c/color_list.dart';
+import 'package:wanandroid_app/color/color_list.dart';
 
 void main() {
   runApp(const WanAndroidAPP());
@@ -15,7 +15,7 @@ class WanAndroidAPP extends StatelessWidget {
       theme: ThemeData(
           primaryColor: MColors.primaryColor,
           primaryColorDark: MColors.primaryColorDark,
-          primaryColorLight: MColors.primaryColorLight),
+          primaryColorLight: MColors.primaryColorAccent),
       home: const SplashPage(),
     );
   }

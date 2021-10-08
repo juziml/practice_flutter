@@ -1,26 +1,14 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wanandroid_app/color/color_list.dart';
-import 'package:wanandroid_app/routes/home_page.dart';
 
-class SplashPage extends StatelessWidget {
-  const SplashPage({Key? key}) : super(key: key);
-
-  void _goHomePage(BuildContext context) {
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>HomePage(key: key)),
-        (r) => false
-    );
-  }
+class ImagePage extends StatelessWidget {
+  const ImagePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(milliseconds: 3000),(){
-      _goHomePage(context);
-    });
     return Scaffold(
         backgroundColor: MColors.primaryColorDark,
         body: Container(
@@ -46,11 +34,11 @@ class SplashPage extends StatelessWidget {
               flex: 0,
               child: Container(
                 alignment: Alignment.bottomCenter,
-                margin: EdgeInsets.only(bottom: 40.0),
+                margin: const EdgeInsets.only(bottom: 40.0),
                 child: Column(
-                  children: [
+                  children: const [
                     Text(
-                      "深蓝·Flutter",
+                      "图片页面",
                       style: TextStyle(
                         fontSize: 30.0,
                         color: Colors.white,
@@ -58,21 +46,6 @@ class SplashPage extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Padding(padding: EdgeInsets.all(10.0)),
-                    Text(
-                      "color from dribble",
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      "data from wanandroid.com",
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.white,
-                      ),
-                    )
                   ],
                 ),
               ),
