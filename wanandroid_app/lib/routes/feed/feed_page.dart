@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wanandroid_app/color/color_list.dart';
+import 'package:wanandroid_app/wiget/banner_widget.dart';
 
 class FeedPage extends StatelessWidget {
   const FeedPage({Key? key}) : super(key: key);
@@ -15,6 +16,10 @@ class FeedPage extends StatelessWidget {
             child: Flex(
           direction: Axis.vertical,
           children: [
+                Expanded(
+                  flex: 1,
+                  child:  BannerWidget(),
+                ),
             Expanded(
               flex: 1,
               child: Container(
