@@ -29,7 +29,6 @@ class _BannerState extends State<BannerWidget> {
   Widget _buildPageView() {
     return Container(
       height: widget.height,
-      color: Colors.yellow,
       child: PageView.builder(
           // onPageChanged: ,
           itemBuilder: (context, index) {
@@ -38,7 +37,8 @@ class _BannerState extends State<BannerWidget> {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text("点击图片"), duration: Duration(seconds: 2)));
           },
-          child: Image.network(widget._images[0].imageUrl),
+          child: Image.network(widget._images[0].imageUrl,
+          fit:BoxFit.cover,),
           // child: Container(
           //
           // ),

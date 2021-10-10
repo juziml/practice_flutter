@@ -50,7 +50,7 @@ class SplashPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      "深蓝·Flutter",
+                      "深蓝·wanandroid",
                       style: TextStyle(
                         fontSize: 30.0,
                         color: Colors.white,
@@ -60,14 +60,14 @@ class SplashPage extends StatelessWidget {
                     ),
                     Padding(padding: EdgeInsets.all(10.0)),
                     Text(
-                      "color from dribble",
+                      "color by dribble",
                       style: TextStyle(
                         fontSize: 16.0,
                         color: Colors.white,
                       ),
                     ),
                     Text(
-                      "data from wanandroid.com",
+                      "data by wanandroid.com",
                       style: TextStyle(
                         fontSize: 16.0,
                         color: Colors.white,
