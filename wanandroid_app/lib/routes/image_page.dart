@@ -10,7 +10,7 @@ class ImagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: MColors.primaryBackground,
+        backgroundColor: MColors.pageBackground,
         body: Container(
             child: Flex(
           direction: Axis.vertical,

@@ -5,13 +5,13 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wanandroid_app/color/color_list.dart';
-import 'package:wanandroid_app/routes/home_page.dart';
+import 'package:wanandroid_app/routes/main_page.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
 
   void _goHomePage(BuildContext context) {
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>HomePage(key: key)),
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>MainPage(key: key)),
         (r) => false
     );
   }
@@ -22,7 +22,7 @@ class SplashPage extends StatelessWidget {
       _goHomePage(context);
     });
     return Scaffold(
-        backgroundColor: MColors.primaryBackground,
+        backgroundColor: MColors.pageBackground,
         body: Container(
             child: Flex(
           direction: Axis.vertical,

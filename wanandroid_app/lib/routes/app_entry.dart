@@ -13,9 +13,9 @@ class WanAndroidAPP extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          primaryColor: MColors.primaryColor,
-          primaryColorDark: MColors.primaryColorDark,
-          primaryColorLight: MColors.primaryColorAccent),
+          primaryColor: Colors.red,
+          primaryColorDark: Colors.yellow,
+          primaryColorLight: Colors.blue),
       home: const SplashPage(),
     );
   }

@@ -5,9 +5,9 @@ import 'package:wanandroid_app/routes/feed_page.dart';
 import 'package:wanandroid_app/routes/image_page.dart';
 import 'package:wanandroid_app/routes/user_page.dart';
 
-class HomePage extends StatefulWidget {
+class MainPage extends StatefulWidget {
 
-  const HomePage({Key? key}) : super(key: key);
+  const MainPage({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 }
 
-class _HomeState extends State<HomePage> {
+class _HomeState extends State<MainPage> {
   var _currentPageIndex = 0;
 
   final List<Widget> _pages = [
@@ -37,7 +37,7 @@ class _HomeState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-      backgroundColor: MColors.primaryColor,
+      backgroundColor: MColors.cardBackground,
         currentIndex: _currentPageIndex,
         onTap:_onTaped,
         elevation: 10,
