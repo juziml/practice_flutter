@@ -17,16 +17,41 @@ class FeedPage extends StatefulWidget {
 class _FeedPageState extends State<FeedPage>{
 
   List<BannerEntity> banners = [BannerEntity("http://tva1.sinaimg.cn/large/005Jb6GUgy1gvamn2yey2j609t05ggms02.jpg")];
-
+  List<Widget> itemWidgets = <Widget>[
+    Text("1"),
+    Text("1"),
+    Text("1"),
+    Text("1"),
+    Text("1"),
+    Text("1"),
+    Text("1"),
+    Text("1"),
+    Text("1"),
+    Text("1"),
+    Text("1"),
+    Text("1"),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: MColors.pageBackground,
         body: Container(
+          color: Colors.white,
             child: Flex(
               direction: Axis.vertical,
               children: [
-                BannerWidget(banners)
+                Expanded(
+                    flex: 0,
+                    child:  BannerWidget(banners)),
+                Expanded(
+                    flex: 1,
+                    child: ListView.builder(
+                    itemCount: 100,
+                    itemExtent: 50,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ListTile(title: Text("$index"));
+                    }))
+
               ],
             )));
   }
