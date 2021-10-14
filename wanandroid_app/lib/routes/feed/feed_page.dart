@@ -35,10 +35,9 @@ class _FeedPageState extends State<FeedPage>{
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: MColors.pageBackground,
-        body: Container(
+        body:Container(
           color: Colors.white,
-            child: Flex(
-              direction: Axis.vertical,
+            child: Column(
               children: [
                 Expanded(
                     flex: 0,
