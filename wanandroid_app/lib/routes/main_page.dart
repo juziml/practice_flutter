@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wanandroid_app/color/color_list.dart';
 import 'package:wanandroid_app/color/color_list.dart';
-import 'package:wanandroid_app/routes/feed/feed_page.dart';
+import 'package:wanandroid_app/routes/feed/feed_page2.dart';
 import 'package:wanandroid_app/routes/img/image_page.dart';
 import 'package:wanandroid_app/routes/user/user_page.dart';
 

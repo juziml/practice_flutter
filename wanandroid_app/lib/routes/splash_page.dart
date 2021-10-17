@@ -50,7 +50,7 @@ class SplashPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      "深蓝·wanandroid",
+                      "Wanandroid·Flutter",
                       style: TextStyle(
                         fontSize: 30.0,
                         color: Colors.white,
