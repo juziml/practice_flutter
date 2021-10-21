@@ -22,11 +22,19 @@ class _BannerState extends State<BannerWidget> {
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.bottomCenter,
-      children: [_buildPageView()],
+      children: _buildPageViews(),
     );
   }
 
-  Widget _buildPageView() {
+  List<Widget> _buildPageViews() {
+    List<Widget> widgets = [];
+    for (var element in widget._images) {
+      widgets.add(_buildPageView(element));
+    }
+    return widgets;
+  }
+
+  Widget _buildPageView(BannerEntity element) {
     return Container(
       height: widget.height,
       child: PageView.builder(
@@ -37,8 +45,10 @@ class _BannerState extends State<BannerWidget> {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text("点击图片"), duration: Duration(seconds: 2)));
           },
-          child: Image.network(widget._images[0].imageUrl,
-          fit:BoxFit.cover,),
+          child: Image.network(
+            element.imageUrl,
+            fit: BoxFit.cover,
+          ),
           // child: Container(
           //
           // ),

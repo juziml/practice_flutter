@@ -40,16 +40,23 @@ class PageData {
 class FeedItem {
   final String title;
   final int id;
+  final String desc;
+  final String author;
+  final String envelopePic;
+  final num publishTime;
 
-  const FeedItem({
-    required this.title,
-    required this.id,
-  });
+  const FeedItem(
+  this.title,{this.desc="",this.author="",this.envelopePic="",this.id=-1,this.publishTime=-1}
+  );
 
   factory FeedItem.fromJson(Map<String, dynamic> json) {
     return FeedItem(
+      json['title'] as String,
       id: json['id'] as int,
-      title: json['title'] as String,
+      desc: json['desc'] as String,
+      author: json['author'] as String,
+      envelopePic: json['envelopePic'] as String,
+      publishTime: json['publishTime'] as num,
     );
   }
 

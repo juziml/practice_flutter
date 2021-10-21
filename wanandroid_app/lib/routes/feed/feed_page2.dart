@@ -15,48 +15,29 @@ class FeedPage extends StatefulWidget {
   State<StatefulWidget> createState() => _FeedPageStateDio();
 }
 
-class _FeedPageState extends State<FeedPage> {
-  List<BannerEntity> banners = [
-    BannerEntity(
-        "http://tva1.sinaimg.cn/large/005Jb6GUgy1gvamn2yey2j609t05ggms02.jpg")
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: MColors.pageBackground,
-        body: Container(
-            color: Colors.white,
-            child: Column(
-              children: [
-                Expanded(flex: 0, child: BannerWidget(banners)),
-                Expanded(
-                    flex: 1,
-                    child: ListView.builder(
-                        itemCount: 100,
-                        itemExtent: 50,
-                        itemBuilder: (BuildContext context, int index) {
-                          return ListTile(title: Text("$index"));
-                        }))
-              ],
-            )));
-  }
-}
-
 class _FeedPageStateDio extends State<FeedPage> {
   List<BannerEntity> banners = [
     BannerEntity(
-        "http://tva1.sinaimg.cn/large/005Jb6GUgy1gvamn2yey2j609t05ggms02.jpg")
+        "http://tva1.sinaimg.cn/large/005Jb6GUgy1gvamn2yey2j609t05ggms02.jpg"),
+    BannerEntity(
+        "http://tva1.sinaimg.cn/large/005Jb6GUgy1gvnb1l8cnqj60d206h76302.jpg")
   ];
+
   List<FeedItem> feeds = [];
   int pageSize = 0;
-
+  bool noMoreData = false;
   void _fetchData() async {
-    if (pageSize > 0) {
+    if (pageSize > 1) {
+      Future.delayed(const Duration(seconds: 2)).then((value) => {
+        setState(() {
+          noMoreData = true;
+        })
+      });
       return;
     }
-    pageSize+=1;
-    Response res = await HttpClient.getDio().get(ServiceApiConstants.feeds);
+
+    Response res = await HttpClient.getDio()
+        .get(ServiceApiConstants.feeds + "$pageSize/json");
     print("res:${res.data}");
     BaseEntity root = BaseEntity.fromJson(res.data);
     print(
@@ -65,14 +46,16 @@ class _FeedPageStateDio extends State<FeedPage> {
     print("feedPage:${feedPage.curPage}");
     List<FeedItem> datas = FeedItem.fromJsonList(feedPage.datas.cast());
     print("datas:${datas.length}");
-    setState(() {
-      feeds = datas;
-    });
+    pageSize += 1;
+    Future.delayed(const Duration(seconds: 2)).then((value) => {
+          setState(() {
+            feeds.addAll(datas);
+          })
+        });
   }
 
   @override
   Widget build(BuildContext context) {
-    _fetchData();
     return Scaffold(
         backgroundColor: MColors.pageBackground,
         body: Container(
@@ -83,12 +66,46 @@ class _FeedPageStateDio extends State<FeedPage> {
                 Expanded(
                     flex: 1,
                     child: ListView.builder(
-                      itemCount: feeds.length,
+                      itemCount: feeds.length+1,
                       itemBuilder: (BuildContext context, int index) {
-                        return ListTile(title: Text(feeds[index].title));
+                        if (index == feeds.length && !noMoreData) {
+                          _fetchData();
+                          return Container(
+                            padding: const EdgeInsets.all((16.0)),
+                            alignment: Alignment.center,
+                            child: const SizedBox(
+                              width: 24.0,
+                              height: 24.0,
+                              child:
+                                  CircularProgressIndicator(strokeWidth: 2.5),
+                            ),
+                          );
+                        }else if(index == feeds.length){
+                          return Container(
+                            padding: const EdgeInsets.all((16.0)),
+                            alignment: Alignment.center,
+                            child:  Container(
+                              alignment: Alignment.center,
+                              child:Text("——再拉就过分了哈——"),
+                            ),
+                          );
+                        }else {
+                          return ListTile(title: Text(feeds[index].title));
+                        }
                       },
                     ))
               ],
             )));
+  }
+
+  Widget _buildItems(int index) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Text(
+          feeds[index].title,
+        ),
+      ],
+    );
   }
 }

@@ -25,5 +25,5 @@ class ServiceApiConstants{
   static const String _domain = "https://www.wanandroid.com";
 
 
-  static const String feeds = _domain + "/article/listproject/0/json";
+  static const String feeds = _domain + "/article/listproject/";
 }
