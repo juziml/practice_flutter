@@ -28,6 +28,7 @@ class _FeedPageStateDio extends State<FeedPage> {
   bool noMoreData = false;
   void _fetchData() async {
     if (pageSize > 1) {
+      //不可以立即调刷新
       Future.delayed(const Duration(seconds: 2)).then((value) => {
         setState(() {
           noMoreData = true;
