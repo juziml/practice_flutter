@@ -8,7 +8,6 @@ class MColors{
   static const Color primaryColorDark = Color.fromARGB(0xFF, 96, 107, 139);
   static const Color primaryColorAccent = Color.fromARGB(0xF1, 24, 229, 196);
 
-  static const Color textColorDark = Color.fromARGB(0xFF, 96, 107, 139);
   static const Color textColorLight = Color.fromARGB(0xFF, 96, 107, 139);
   static const Color textColorInAccentBtn = Color.fromARGB(0xFF, 0, 33, 59);
 }

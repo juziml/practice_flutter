@@ -1,7 +1,10 @@
+import 'dart:ffi';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:wanandroid_app/color/color_list.dart';
 import 'package:wanandroid_app/model/base_entity.dart';
 import 'package:wanandroid_app/wiget/banner_widget.dart';
@@ -26,14 +29,15 @@ class _FeedPageStateDio extends State<FeedPage> {
   List<FeedItem> feeds = [];
   int pageSize = 0;
   bool noMoreData = false;
+
   void _fetchData() async {
     if (pageSize > 1) {
       //不可以立即调刷新
       Future.delayed(const Duration(seconds: 2)).then((value) => {
-        setState(() {
-          noMoreData = true;
-        })
-      });
+            setState(() {
+              noMoreData = true;
+            })
+          });
       return;
     }
 
@@ -48,7 +52,7 @@ class _FeedPageStateDio extends State<FeedPage> {
     List<FeedItem> datas = FeedItem.fromJsonList(feedPage.datas.cast());
     print("datas:${datas.length}");
     pageSize += 1;
-    Future.delayed(const Duration(seconds: 2)).then((value) => {
+    Future.delayed(const Duration(seconds: 1)).then((value) => {
           setState(() {
             feeds.addAll(datas);
           })
@@ -60,53 +64,100 @@ class _FeedPageStateDio extends State<FeedPage> {
     return Scaffold(
         backgroundColor: MColors.pageBackground,
         body: Container(
-            color: Colors.white,
             child: Column(
-              children: [
-                Expanded(flex: 0, child: BannerWidget(banners)),
-                Expanded(
-                    flex: 1,
-                    child: ListView.builder(
-                      itemCount: feeds.length+1,
-                      itemBuilder: (BuildContext context, int index) {
-                        if (index == feeds.length && !noMoreData) {
-                          _fetchData();
-                          return Container(
-                            padding: const EdgeInsets.all((16.0)),
-                            alignment: Alignment.center,
-                            child: const SizedBox(
-                              width: 24.0,
-                              height: 24.0,
-                              child:
-                                  CircularProgressIndicator(strokeWidth: 2.5),
-                            ),
-                          );
-                        }else if(index == feeds.length){
-                          return Container(
-                            padding: const EdgeInsets.all((16.0)),
-                            alignment: Alignment.center,
-                            child:  Container(
-                              alignment: Alignment.center,
-                              child:Text("——再拉就过分了哈——"),
-                            ),
-                          );
-                        }else {
-                          return ListTile(title: Text(feeds[index].title));
-                        }
-                      },
-                    ))
-              ],
-            )));
+          children: [
+            Expanded(flex: 0, child: BannerWidget(banners)),
+            Expanded(
+                flex: 1,
+                child: ListView.builder(
+                  itemCount: feeds.length + 1,
+                  itemBuilder: (BuildContext context, int index) {
+                    if (index == feeds.length && !noMoreData) {
+                      _fetchData();
+                      return Container(
+                        padding: const EdgeInsets.all((16.0)),
+                        alignment: Alignment.center,
+                        child: const SizedBox(
+                          width: 24.0,
+                          height: 24.0,
+                          child: CircularProgressIndicator(strokeWidth: 2.5),
+                        ),
+                      );
+                    } else if (index == feeds.length) {
+                      return Container(
+                        padding: const EdgeInsets.all((16.0)),
+                        alignment: Alignment.center,
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text("——再拉就过分了哈——",
+                          style: TextStyle(color: MColors.textColorLight),),
+                        ),
+                      );
+                    } else {
+                      // return ListTile(title: Text(feeds[index].title));
+                      return _buildItems(index);
+                    }
+                  },
+                ))
+          ],
+        )));
   }
 
   Widget _buildItems(int index) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Text(
-          feeds[index].title,
-        ),
-      ],
-    );
+    FeedItem item = feeds[index];
+    return Card(
+        margin: EdgeInsets.only(bottom: 10, left: 10, right: 10),
+        elevation: 1,
+        child: Container(
+            padding: const EdgeInsets.all(10),
+            color: MColors.cardBackground,
+            child: Flex(
+              direction: Axis.horizontal,
+              children: [
+                Expanded(
+                    flex: 0,
+                    child: Image.network(
+                      item.envelopePic,
+                      fit: BoxFit.cover,
+                      width: 120,
+                      height: 90,
+                    )),
+                Expanded(
+                    flex: 1,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 10),
+                      height: 90,
+                      child: Flex(
+                        direction: Axis.vertical,
+                        children: [
+                          Expanded(
+                            flex: 0,
+                            child: Text(item.title,
+                                textAlign: TextAlign.left,
+                                maxLines: 1,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: MColors.textColorLight,
+                                )),
+                          ) ,
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              color: Colors.yellow,
+                            ),
+                          ),
+                          Expanded(
+                            flex:0,
+                            child: Container(
+                              color: Colors.purple,
+                              height: 10,
+                              alignment: Alignment.bottomCenter,
+                            ),
+                          )
+                        ],
+                      ),
+                    ))
+              ],
+            )));
   }
 }
