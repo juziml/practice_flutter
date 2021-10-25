@@ -89,8 +89,10 @@ class _FeedPageStateDio extends State<FeedPage> {
                         alignment: Alignment.center,
                         child: Container(
                           alignment: Alignment.center,
-                          child: Text("——再拉就过分了哈——",
-                          style: TextStyle(color: MColors.textColorLight),),
+                          child: Text(
+                            "——再拉就过分了哈——",
+                            style: TextStyle(color: MColors.textColorDark),
+                          ),
                         ),
                       );
                     } else {
@@ -131,28 +133,83 @@ class _FeedPageStateDio extends State<FeedPage> {
                         direction: Axis.vertical,
                         children: [
                           Expanded(
-                            flex: 0,
-                            child: Text(item.title,
-                                textAlign: TextAlign.left,
-                                maxLines: 1,
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  color: MColors.textColorLight,
-                                )),
-                          ) ,
+                              flex: 0,
+                              child: Container(
+                                alignment: Alignment.topLeft,
+                                child: Text(item.title,
+                                    maxLines: 1, //softWrap 会展示半个字
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: MColors.textColorLight,
+                                    )),
+                              )),
                           Expanded(
-                            flex: 1,
+                            flex: 0,
                             child: Container(
-                              color: Colors.yellow,
+                              margin: EdgeInsets.only(top: 2),
+                              child: Text(item.desc,
+                                  maxLines: 2, //softWrap 会展示半个字
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    color: MColors.textColorDark,
+                                  )),
                             ),
                           ),
                           Expanded(
-                            flex:0,
+                              flex: 1,
+                              child: Container(
+                          )),
+                          Expanded(
+                            flex: 0,
                             child: Container(
-                              color: Colors.purple,
-                              height: 10,
-                              alignment: Alignment.bottomCenter,
-                            ),
+                                child: Flex(
+                                  direction: Axis.horizontal,
+                                  children: [
+                                    Expanded(
+                                        flex: 0,
+                                        child: Container(
+                                          padding: EdgeInsets.only(left: 2,right: 2),
+                                          alignment: Alignment(0,0),
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.account_circle_rounded,
+                                                size: 15,
+                                                color: MColors.textColorDark,
+                                              ),
+                                              Text(
+                                                " ${item.author}1",
+                                                style: TextStyle(
+                                                    color:
+                                                        MColors.textColorDark,
+                                                    fontSize: 15),
+                                              )
+                                            ],
+                                          ),
+                                        )),
+                              Expanded(
+                                  flex: 1,
+                                  child: Container()),
+                                    Expanded(
+                                        flex: 0,
+                                        child: Container(
+                                          padding: EdgeInsets.only(left: 2,right: 2),
+                                          alignment: Alignment(0,0),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                " ${item.niceDate}",
+                                                style: TextStyle(
+                                                  overflow: TextOverflow.ellipsis,
+                                                    color:
+                                                    MColors.textColorDark,
+                                                    fontSize: 15),
+                                              )
+                                            ],
+                                          ),
+                                        )),
+                                  ],
+                                )),
                           )
                         ],
                       ),

@@ -43,10 +43,11 @@ class FeedItem {
   final String desc;
   final String author;
   final String envelopePic;
+  final String niceDate;
   final num publishTime;
 
   const FeedItem(
-  this.title,{this.desc="",this.author="",this.envelopePic="",this.id=-1,this.publishTime=-1}
+  this.title,{this.desc="",this.author="",this.envelopePic="",this.niceDate="",this.id=-1,this.publishTime=-1}
   );
 
   factory FeedItem.fromJson(Map<String, dynamic> json) {
@@ -56,6 +57,7 @@ class FeedItem {
       desc: json['desc'] as String,
       author: json['author'] as String,
       envelopePic: json['envelopePic'] as String,
+      niceDate: json['niceDate'] as String,
       publishTime: json['publishTime'] as num,
     );
   }
