@@ -22,38 +22,36 @@ class _BannerState extends State<BannerWidget> {
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.bottomCenter,
-      children: _buildPageViews(),
+      children: [_buildPageView(widget._images)],
     );
   }
 
-  List<Widget> _buildPageViews() {
-    List<Widget> widgets = [];
-    for (var element in widget._images) {
-      widgets.add(_buildPageView(element));
-    }
-    return widgets;
+  String calculate(int index, List<BannerEntity> images) {
+    final imgIndex = index % (images.length);
+    return images[imgIndex].imageUrl;
   }
 
-  Widget _buildPageView(BannerEntity element) {
+  Widget _buildPageView(List<BannerEntity> images) {
     return Container(
       height: widget.height,
       child: PageView.builder(
           // onPageChanged: ,
+          itemCount: 10000,
           itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                content: Text("点击图片"), duration: Duration(seconds: 2)));
-          },
-          child: Image.network(
-            element.imageUrl,
-            fit: BoxFit.cover,
-          ),
-          // child: Container(
-          //
-          // ),
-        );
-      }),
+            return GestureDetector(
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text("点击图片"), duration: Duration(seconds: 2)));
+              },
+              child: Image.network(
+                calculate(index, images),
+                fit: BoxFit.cover,
+              ),
+              // child: Container(
+              //
+              // ),
+            );
+          }),
     );
   }
 }
