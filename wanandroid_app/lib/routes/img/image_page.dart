@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wanandroid_app/color/color_list.dart';
+import 'package:wanandroid_app/common/color_list.dart';
 
 class ImagePage extends StatelessWidget {
   const ImagePage({Key? key}) : super(key: key);

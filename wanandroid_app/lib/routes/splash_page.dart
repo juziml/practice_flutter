@@ -4,7 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wanandroid_app/color/color_list.dart';
+import 'package:wanandroid_app/common/color_list.dart';
 import 'package:wanandroid_app/routes/main_page.dart';
 
 class SplashPage extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wanandroid_app/routes/splash_page.dart';
-import 'package:wanandroid_app/color/color_list.dart';
+import 'package:wanandroid_app/common/color_list.dart';
 
 void main() {
   runApp(const WanAndroidAPP());
