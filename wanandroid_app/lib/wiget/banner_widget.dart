@@ -13,6 +13,8 @@ class BannerWidget extends StatefulWidget {
 }
 
 class _BannerState extends State<BannerWidget> {
+  int _currIndex = 0;
+
   @override
   void initState() {
     super.initState();
@@ -22,13 +24,36 @@ class _BannerState extends State<BannerWidget> {
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.bottomCenter,
-      children: [_buildPageView(widget._images)],
+      children: [_buildPageView(widget._images), _createIndicator()],
     );
   }
 
-  String calculate(int index, List<BannerEntity> images) {
-    final imgIndex = index % (images.length);
-    return images[imgIndex].imageUrl;
+  Widget _createIndicator() {
+    List<Widget> children = [];
+    for (int i = 0; i < widget._images.length; i++) {
+      Color color = i == _currIndex ? Colors.amberAccent : Colors.white;
+      children.add(Container(
+        height: 8,
+        width: 8,
+        decoration: BoxDecoration(
+            color: color, borderRadius: BorderRadius.circular(45)),
+        margin: const EdgeInsets.only(right: 4, bottom: 20),
+      ));
+    }
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: children,
+    );
+  }
+
+  _onPageChanged(int index) {
+    setState(() {});
+  }
+
+  int _calculateImgIndex(int index, List<BannerEntity> images) {
+    int realIndex = index % (images.length);
+    _currIndex = realIndex;
+    return realIndex;
   }
 
   Widget _buildPageView(List<BannerEntity> images) {
@@ -37,6 +62,7 @@ class _BannerState extends State<BannerWidget> {
       child: PageView.builder(
           // onPageChanged: ,
           itemCount: 10000,
+          onPageChanged: _onPageChanged,
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
@@ -44,7 +70,7 @@ class _BannerState extends State<BannerWidget> {
                     content: Text("点击图片"), duration: Duration(seconds: 2)));
               },
               child: Image.network(
-                calculate(index, images),
+                images[_calculateImgIndex(index, images)].imageUrl,
                 fit: BoxFit.cover,
               ),
               // child: Container(
