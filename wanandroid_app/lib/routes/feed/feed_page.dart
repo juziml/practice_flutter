@@ -109,7 +109,7 @@ class _FeedPageStateDio extends State<FeedPage> {
   Widget _buildItems(int index) {
     FeedItem item = feeds[index];
     return Card(
-        margin: EdgeInsets.only(bottom: 10, left: 10, right: 10),
+        margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
         elevation: 1,
         child: Container(
             padding: const EdgeInsets.all(10),
@@ -119,7 +119,8 @@ class _FeedPageStateDio extends State<FeedPage> {
               children: [
                 Expanded(
                     flex: 0,
-                    child: Container(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
                       child: Image.network(
                         item.envelopePic,
                         fit: BoxFit.cover,
