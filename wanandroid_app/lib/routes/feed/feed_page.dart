@@ -167,48 +167,45 @@ class _FeedPageStateDio extends State<FeedPage> {
                                 child: Flex(
                               direction: Axis.horizontal,
                               children: [
-                                Expanded(
-                                    flex: 0,
-                                    child: Container(
-                                      padding:
-                                          EdgeInsets.only(left: 2, right: 2),
-                                      alignment: Alignment(0, 0),
-                                      child: Row(
-                                        children: [
-                                          const Icon(
-                                            Icons.account_circle_rounded,
-                                            size: 15,
-                                            color: MColors.textColorDark,
-                                          ),
-                                          Container(
-                                            alignment: Alignment.bottomLeft,
-                                            color: Colors.green,
-                                            constraints: const BoxConstraints(
-                                                maxWidth: 60),
-                                            child: Text(
-                                              item.author.joinGhostCharacter(),
-                                              maxLines: 1,
-                                              style: const TextStyle(
-                                                  color: MColors.textColorDark,
-                                                  fontSize: 15),
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                          ),
-                                        ],
+                               Container(
+                                  padding:
+                                      const EdgeInsets.only(left: 2, right: 2),
+                                  alignment: const Alignment(0, 0),
+                                  child: Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.account_circle_rounded,
+                                        size: 15,
+                                        color: MColors.textColorDark,
                                       ),
-                                    )),
+                                      Container(
+                                        alignment: Alignment.bottomLeft,
+                                        constraints:
+                                            const BoxConstraints(maxWidth: 50),
+                                        child: Text(
+                                          item.author.joinGhostCharacter(),
+                                          maxLines: 1,
+                                          style: const TextStyle(
+                                              color: MColors.textColorDark,
+                                              fontSize: 15),
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                                 Expanded(flex: 1, child: Container()),
                                 Expanded(
                                     flex: 0,
                                     child: Container(
-                                      padding:
-                                          EdgeInsets.only(left: 2, right: 2),
-                                      alignment: Alignment(0, 0),
+                                      padding: const EdgeInsets.only(
+                                          left: 2, right: 2),
+                                      alignment: const Alignment(0, 0),
                                       child: Row(
                                         children: [
                                           Text(
                                             " ${item.niceDate}",
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 overflow: TextOverflow.ellipsis,
                                                 color: MColors.textColorDark,
                                                 fontSize: 15),
