@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -23,7 +21,9 @@ class _FeedPageStateDio extends State<FeedPage> {
     BannerEntity(
         "http://tva1.sinaimg.cn/large/005Jb6GUgy1gvnb1l8cnqj60d206h76302.jpg"),
     BannerEntity(
-        "http://tva1.sinaimg.cn/large/005Jb6GUgy1gvamn2yey2j609t05ggms02.jpg")
+        "http://tva1.sinaimg.cn/large/005Jb6GUgy1gvamn2yey2j609t05ggms02.jpg"),
+    BannerEntity(
+        "http://tva1.sinaimg.cn/large/008sVhfmgy1h25puseaepj30fm07rgs4.jpg")
   ];
 
   List<FeedItem> feeds = [];

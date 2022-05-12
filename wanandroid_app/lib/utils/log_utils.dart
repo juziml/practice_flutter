@@ -2,7 +2,8 @@ import 'package:logger/logger.dart';
 
 class Log {
   static final Logger _logger = Logger(
-    printer: PrefixPrinter(PrettyPrinter()),
+    printer: PrefixPrinter(PrettyPrinter(),
+        debug: "hba", verbose: "hba", error: "hba", info: "hba"),
   );
 
   static void v(dynamic message) {
@@ -28,5 +29,4 @@ class Log {
   static void wtf(dynamic message) {
     _logger.wtf(message);
   }
-
 }

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class BaseEntity {
   final int errorCode;
   final String errorMsg;
