@@ -63,11 +63,17 @@ class _FeedPageStateDio extends State<FeedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: MColors.pageBackground,
-        body: Container(
-            child: Column(
+        // backgroundColor: MColors.pageBackground,
+        backgroundColor: Colors.amber,
+        body: Column(
           children: [
-            Expanded(flex: 0, child: BannerWidget(banners)),
+            // Expanded(flex: 0, child: BannerWidget(banners)),
+            Expanded(
+                flex: 0,
+                child: Container(
+                  height: 10,
+                  color: Colors.green,
+                )),
             Expanded(
                 flex: 1,
                 child: ListView.builder(
@@ -103,7 +109,7 @@ class _FeedPageStateDio extends State<FeedPage> {
                   },
                 ))
           ],
-        )));
+        ));
   }
 
   Widget _buildItems(int index) {
@@ -113,7 +119,8 @@ class _FeedPageStateDio extends State<FeedPage> {
         elevation: 1,
         child: Container(
             padding: const EdgeInsets.all(10),
-            color: MColors.cardBackground,
+            // color: MColors.cardBackground,
+            color: Colors.black12,
             child: Flex(
               direction: Axis.horizontal,
               children: [
