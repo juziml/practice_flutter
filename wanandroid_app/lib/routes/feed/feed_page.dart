@@ -67,7 +67,7 @@ class _FeedPageStateDio extends State<FeedPage> {
         backgroundColor: Colors.amber,
         body: Column(
           children: [
-            // Expanded(flex: 0, child: BannerWidget(banners)),
+            Expanded(flex: 0, child: BannerWidget(banners)),
             Expanded(
                 flex: 0,
                 child: Container(
