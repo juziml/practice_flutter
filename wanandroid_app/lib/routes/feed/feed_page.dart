@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:wanandroid_app/common/color_list.dart';
+import 'package:wanandroid_app/ext/ext.dart';
 import 'package:wanandroid_app/model/base_entity.dart';
 import 'package:wanandroid_app/wiget/banner_widget.dart';
 import 'package:wanandroid_app/model/banner_entity.dart';
@@ -89,7 +90,7 @@ class _FeedPageStateDio extends State<FeedPage> {
                         alignment: Alignment.center,
                         child: Container(
                           alignment: Alignment.center,
-                          child: Text(
+                          child: const Text(
                             "——再拉就过分了哈——",
                             style: TextStyle(color: MColors.textColorDark),
                           ),
@@ -118,11 +119,13 @@ class _FeedPageStateDio extends State<FeedPage> {
               children: [
                 Expanded(
                     flex: 0,
-                    child: Image.network(
-                      item.envelopePic,
-                      fit: BoxFit.cover,
-                      width: 120,
-                      height: 90,
+                    child: Container(
+                      child: Image.network(
+                        item.envelopePic,
+                        fit: BoxFit.cover,
+                        width: 120,
+                        height: 90,
+                      ),
                     )),
                 Expanded(
                     flex: 1,
@@ -138,7 +141,8 @@ class _FeedPageStateDio extends State<FeedPage> {
                                 alignment: Alignment.topLeft,
                                 child: Text(item.title,
                                     maxLines: 1, //softWrap 会展示半个字
-                                    style: TextStyle(
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
                                       fontSize: 18,
                                       color: MColors.textColorLight,
                                     )),
@@ -146,16 +150,17 @@ class _FeedPageStateDio extends State<FeedPage> {
                           Expanded(
                             flex: 0,
                             child: Container(
-                              margin: EdgeInsets.only(top: 2),
+                              margin: const EdgeInsets.only(top: 2),
                               child: Text(item.desc,
                                   maxLines: 2, //softWrap 会展示半个字
+                                  overflow: TextOverflow.ellipsis,
                                   style: const TextStyle(
                                     fontSize: 14,
                                     color: MColors.textColorDark,
                                   )),
                             ),
                           ),
-                          Expanded(flex: 1, child: Container()),
+                          Expanded(flex: 0, child: Container()),
                           Expanded(
                             flex: 0,
                             child: Container(
@@ -170,17 +175,25 @@ class _FeedPageStateDio extends State<FeedPage> {
                                       alignment: Alignment(0, 0),
                                       child: Row(
                                         children: [
-                                          Icon(
+                                          const Icon(
                                             Icons.account_circle_rounded,
                                             size: 15,
                                             color: MColors.textColorDark,
                                           ),
-                                          Text(
-                                            " ${item.author}1",
-                                            style: TextStyle(
-                                                color: MColors.textColorDark,
-                                                fontSize: 15),
-                                          )
+                                          Container(
+                                            alignment: Alignment.bottomLeft,
+                                            color: Colors.green,
+                                            constraints: const BoxConstraints(
+                                                maxWidth: 60),
+                                            child: Text(
+                                              item.author.joinGhostCharacter(),
+                                              maxLines: 1,
+                                              style: const TextStyle(
+                                                  color: MColors.textColorDark,
+                                                  fontSize: 15),
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     )),
