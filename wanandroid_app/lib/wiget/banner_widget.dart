@@ -1,9 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:wanandroid_app/model/banner_entity.dart';
-
-import '../utils/log_utils.dart';
 
 class BannerWidget extends StatefulWidget {
   const BannerWidget(this._images, {Key? key, this.height = 200, this.onTap})
@@ -24,11 +21,11 @@ class _BannerState extends State<BannerWidget> {
   @override
   void initState() {
     super.initState();
-    Log.i("_timer initState");
+    // Log.i("_timer initState");
     _timer = Timer.periodic(const Duration(seconds: 3), (t) {
       controller.nextPage(
           duration: const Duration(milliseconds: 200), curve: Curves.ease);
-      Log.i("_timer ${controller.position}");
+      // Log.i("_timer ${controller.position}");
     });
   }
 
@@ -65,7 +62,7 @@ class _BannerState extends State<BannerWidget> {
   }
 
   _onPageChanged(int index) {
-    Log.i("_onPageChanged $index");
+    // Log.i("_onPageChanged $index");
     setState(() {});
   }
 

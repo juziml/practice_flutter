@@ -23,6 +23,8 @@ class _FeedPageStateDio extends State<FeedPage> {
     BannerEntity(
         "http://tva1.sinaimg.cn/large/005Jb6GUgy1gvamn2yey2j609t05ggms02.jpg"),
     BannerEntity(
+        "http://tva1.sinaimg.cn/large/005Jb6GUgy1gvnb1l8cnqj60d206h76302.jpg"),
+    BannerEntity(
         "http://tva1.sinaimg.cn/large/005Jb6GUgy1gvnb1l8cnqj60d206h76302.jpg")
   ];
 
@@ -70,6 +72,7 @@ class _FeedPageStateDio extends State<FeedPage> {
             Expanded(
                 flex: 1,
                 child: ListView.builder(
+                  padding: EdgeInsets.zero,
                   itemCount: feeds.length + 1,
                   itemBuilder: (BuildContext context, int index) {
                     if (index == feeds.length && !noMoreData) {
