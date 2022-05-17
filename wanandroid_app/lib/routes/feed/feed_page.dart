@@ -69,14 +69,9 @@ class _FeedPageStateDio extends State<FeedPage> {
           children: [
             Expanded(flex: 0, child: BannerWidget(banners)),
             Expanded(
-                flex: 0,
-                child: Container(
-                  height: 10,
-                  color: Colors.green,
-                )),
-            Expanded(
                 flex: 1,
                 child: ListView.builder(
+                  padding: const EdgeInsets.only(top: 10),
                   itemCount: feeds.length + 1,
                   itemBuilder: (BuildContext context, int index) {
                     if (index == feeds.length && !noMoreData) {

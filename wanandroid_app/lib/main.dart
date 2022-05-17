@@ -24,7 +24,7 @@ class WanAndroidAPP extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
           primaryColor: Colors.red,
-          primaryColorDark: Colors.yellow,
+          primaryColorDark: Colors.deepOrange,
           primaryColorLight: Colors.blue),
       home: const SplashPage(),
     );
