@@ -67,14 +67,20 @@ class _FeedPageStateDio extends State<FeedPage> {
         backgroundColor: Colors.amber,
         body: Column(
           children: [
-            Expanded(flex: 0, child: BannerWidget(banners)),
+            // Expanded(flex: 0, child: BannerWidget(banners)),
             Expanded(
                 flex: 1,
                 child: ListView.builder(
-                  padding: const EdgeInsets.only(top: 10),
-                  itemCount: feeds.length + 1,
+                  physics: const BouncingScrollPhysics(),
+                  padding: const EdgeInsets.all(0),
+                  itemCount: feeds.length + 2,
                   itemBuilder: (BuildContext context, int index) {
-                    if (index == feeds.length && !noMoreData) {
+                    if (index == 0) {
+                      return Container(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: BannerWidget(banners),
+                      );
+                    } else if ((index - 1) == feeds.length && !noMoreData) {
                       _fetchData();
                       return Container(
                         padding: const EdgeInsets.all((16.0)),
@@ -85,7 +91,10 @@ class _FeedPageStateDio extends State<FeedPage> {
                           child: CircularProgressIndicator(strokeWidth: 2.5),
                         ),
                       );
-                    } else if (index == feeds.length) {
+                    } else if ((index - 1) < feeds.length) {
+                      // return ListTile(title: Text(feeds[index].title));
+                      return _buildItems(index - 1);
+                    } else {
                       return Container(
                         padding: const EdgeInsets.all((16.0)),
                         alignment: Alignment.center,
@@ -97,9 +106,6 @@ class _FeedPageStateDio extends State<FeedPage> {
                           ),
                         ),
                       );
-                    } else {
-                      // return ListTile(title: Text(feeds[index].title));
-                      return _buildItems(index);
                     }
                   },
                 ))
@@ -170,7 +176,7 @@ class _FeedPageStateDio extends State<FeedPage> {
                                 child: Flex(
                               direction: Axis.horizontal,
                               children: [
-                               Container(
+                                Container(
                                   padding:
                                       const EdgeInsets.only(left: 2, right: 2),
                                   alignment: const Alignment(0, 0),
