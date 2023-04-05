@@ -1,11 +1,8 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wanandroid_app/common/color_list.dart';
 
-class ImagePage extends StatelessWidget {
-  const ImagePage({Key? key}) : super(key: key);
+class UserPage extends StatelessWidget {
+  const UserPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +35,7 @@ class ImagePage extends StatelessWidget {
                 child: Column(
                   children: const [
                     Text(
-                      "图片页面",
+                      "用户页面",
                       style: TextStyle(
                         fontSize: 30.0,
                         color: Colors.white,

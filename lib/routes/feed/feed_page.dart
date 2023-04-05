@@ -1,14 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:wanandroid_app/common/color_list.dart';
 import 'package:wanandroid_app/ext/ext.dart';
-import 'package:wanandroid_app/model/base_entity.dart';
-import 'package:wanandroid_app/wiget/banner_widget.dart';
 import 'package:wanandroid_app/model/banner_entity.dart';
+import 'package:wanandroid_app/model/base_entity.dart';
 import 'package:wanandroid_app/net/http.dart';
+import 'package:wanandroid_app/wiget/banner_widget.dart';
 
 class FeedPage extends StatefulWidget {
   const FeedPage({Key? key}) : super(key: key);
