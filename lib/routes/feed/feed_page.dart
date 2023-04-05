@@ -60,8 +60,8 @@ class _FeedPageStateDio extends State<FeedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // backgroundColor: MColors.pageBackground,
-        backgroundColor: Colors.amber,
+        backgroundColor: MColors.pageBackground,
+        // backgroundColor: Colors.amber,
         body: Column(
           children: [
             // Expanded(flex: 0, child: BannerWidget(banners)),
@@ -117,8 +117,8 @@ class _FeedPageStateDio extends State<FeedPage> {
         elevation: 1,
         child: Container(
             padding: const EdgeInsets.all(10),
-            // color: MColors.cardBackground,
-            color: Colors.black12,
+            color: MColors.cardBackground,
+            // color: Colors.black12,
             child: Flex(
               direction: Axis.horizontal,
               children: [
